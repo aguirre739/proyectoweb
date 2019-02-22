@@ -15,6 +15,10 @@ class CrearTablaPayment extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type');
+            $table->double('amount', 6, 2);
+            $table->integer('packages_id')->unsigned();
+            $table->foreign('packages_id')->references('id')->on('packages');
             $table->timestamps();
         });
     }

@@ -15,6 +15,13 @@ class CrearTablaPackage extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('description');
+            $table->integer('cadets_id')->unsigned();
+            $table->foreign('cadets_id')->references('id')->on('customers');
+            $table->integer('customers_id')->unsigned();
+            $table->foreign('customers_id')->references('id')->on('customers');
+            $table->integer('origins_id')->unsigned();
+            $table->foreign('origins_id')->references('id')->on('origins');
             $table->timestamps();
         });
     }

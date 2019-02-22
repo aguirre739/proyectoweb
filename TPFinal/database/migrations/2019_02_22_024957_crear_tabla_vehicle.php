@@ -15,6 +15,12 @@ class CrearTablaVehicle extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('domain'); //dominio de vehiculo
+            $table->string('type'); //tipo de vehiculo
+            $table->string('capacitance'); //capacidad de carga de un vehiculo
+            $table->string('volume'); //volumen de carga
+            $table->integer('cadets_id')->unsigned();
+            $table->foreign('cadets_id')->references('id')->on('cadets');
             $table->timestamps();
         });
     }

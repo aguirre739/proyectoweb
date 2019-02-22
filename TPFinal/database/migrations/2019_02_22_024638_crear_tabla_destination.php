@@ -15,6 +15,9 @@ class CrearTablaDestination extends Migration
     {
         Schema::create('destinations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('address');
+            $table->string('locality');
+            $table->string('receiver');
             $table->timestamps();
         });
     }

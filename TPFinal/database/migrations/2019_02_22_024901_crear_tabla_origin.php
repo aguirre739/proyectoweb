@@ -15,6 +15,8 @@ class CrearTablaOrigin extends Migration
     {
         Schema::create('origins', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('address');
+            $table->string('locality');
             $table->timestamps();
         });
     }
