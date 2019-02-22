@@ -15,6 +15,10 @@ class CrearTablaCadet extends Migration
     {
         Schema::create('cadets', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('cuil');
+            $table->binary('photo');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
