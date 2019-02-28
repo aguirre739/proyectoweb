@@ -66,6 +66,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
+                                <input type="button" class="btn btn-secondary" value="Cancel" onclick="location.href='{{ url()->previous()}}'">
                             </div>
                         </div>
                     </form>
