@@ -10,11 +10,27 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use GuzzleHttp\Client;
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $client = new Client([
+        'base_uri' => 'https://apis.datos.gob.ar/georef/api/',
+        'timeout' => 2.0,
+    ]);
+
+        
+    $reponse = $client->request('GET','calles?departamento=90084&max=1500');
+    
+    $cal = json_decode($reponse -> getBody()->getContents());
+
+
+    return view('welcome', ['calles' => $cal->calles]);
+    
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/inicio', 'InicioController@index')->name('inicio');

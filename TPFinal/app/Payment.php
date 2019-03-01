@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    //
+    public function Package(){
+        return $this->belongsTo('App\Package'); //pertenece a 
+    }
 }

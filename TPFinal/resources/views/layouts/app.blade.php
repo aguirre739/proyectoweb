@@ -19,7 +19,7 @@
         <style>
             html, body {
                 background-color: #fff;
-                background: url(https://images.deliveryhero.io/image/pedidosya/header-backgrounds/sushi-5.jpg);
+                background:white;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -53,7 +53,7 @@
 
             .title {
                 font-size: 84px;
-                color: #ffffff;
+                color: black;
             }
 
             .links > a {
@@ -72,6 +72,23 @@
         </style>
 </head>
 <body>
+<div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <figure class="figure">
+                        <img src="{{ asset('imagenes/img/logo-UrbanEnvios.png') }}"class="figure-img img-fluid rounded" alt="logo-empresa">
+                    </figure>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <h1><b>BIENVENIDOS</b></h1>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
     <div id="app">
         
         <nav class="navbar navbar-default navbar-static-top">
@@ -87,7 +104,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/inicio') }}">
                     {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -102,8 +119,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">Entrar</a></li>
+                            <li><a href="{{ route('register') }}">Registrarse</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
@@ -115,7 +132,19 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Modificar Perfil
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Salir
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -127,12 +156,24 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+            </div>  
         </nav>
-        @yield('content')
+        @yield('contenido')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
+<footer>
+        <div class="media borde">
+            <div class="media-body">
+            <p class="text-right"><small class="text-muted">&copy; 2019 UrbanEnvios
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            </small></p>
+              
+            </div>
+            <img class="imagen3 ml-3" src="{{ asset('imagenes/img/logo-UrbanEnvios-pie.png')}}" alt="Generic placeholder image">
+          </div>
+    </footer>   
+
 </html>
